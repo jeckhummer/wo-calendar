@@ -27,7 +27,7 @@ export function separateTasksByDays(tasks) {
 			.map(i => {
 				return {
 					task: x,
-					id: `${x.id}_${i + 1}`,
+					id: `${x.WOTNumber}_${i + 1}`,
 					start: i === 0 ?
 						x.start :
 						moment(x.start)
@@ -98,7 +98,7 @@ export function getBoundariesSequence(taskParts) {
 	return boundariesSequence;
 }
 
-export function _getBoundariesSequence(taskPartkParts) {
+export function _getBoundariesSequence(taskParts) {
 	const starts = taskParts.map(taskPart =>
 		new TaskBoundary({
 			type: 'start',
@@ -126,6 +126,7 @@ export function _getBoundariesSequence(taskPartkParts) {
 }
 
 export function calculateIntersections(taskParts) {
+    console.log(taskParts);
 	const boundariesSequence = getBoundariesSequence(taskParts);
 	const heap = [];
 	const intersections = {};
