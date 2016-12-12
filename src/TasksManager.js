@@ -27,7 +27,7 @@ export function separateTasksByDays(tasks) {
 			.map(i => {
 				return {
 					task: x,
-					id: `${x.WOTNumber}_${i + 1}`,
+					id: `${x.id}_${i + 1}`,
 					start: i === 0 ?
 						x.start :
 						moment(x.start)
