@@ -27,6 +27,7 @@ class DayCanvas extends Component{
 						}}>
 						<TaskTile 
 							data={x.task}
+							hasConflict={this.props.conflictsMap[x.task.id] === true}
 							teams={this.props.teams}
 						/>
 					</div>

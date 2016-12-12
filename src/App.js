@@ -103,33 +103,22 @@ class App extends Component {
         let schedule;
         const tasksSortedByStartDate = TasksManager.sortTasksByStartDates(this.state.tasks);
         const filteredTasks = TasksManager.filterTasksByTeam(tasksSortedByStartDate, this.state.teamsFilter);
-        console.log(filteredTasks);
 
         let taskParts = TasksManager.separateTasksByDays(filteredTasks);
         const intersections = TasksManager.calculateIntersections(taskParts);
 
 
-        const intervals = TasksManager._getBoundaryIntervals(
-            TasksManager._separateTasksByDays(filteredTasks)
+        const conflictsMap = TasksManager.calculateConflicts(
+            TasksManager._getBoundaryIntervals(
+                TasksManager._separateTasksByDays(filteredTasks)
+            ),
+            this.state.tasks
         );
-
-        if(intervals.length !== 0) {
-            console.groupCollapsed("intervals");
-            console.log(JSON.stringify(intervals, undefined, 4));
-            console.groupEnd();
-        }
-
-        // if(intervals.length > 0){
-        //     const localMinimum = TasksManager.getFirstLocalMaximum(
-        //         intervals,
-        //         TasksManager.getIntervalIntersectionsCount
-        //     );
-        //     console.log(localMinimum);
-        // }
 
         taskParts.forEach(
             x => {
                 x.intersections = intersections[x.id];
+                x.hasConflicts = conflictsMap[x.task.id];
                 x.order = 0;
             }
         );
@@ -148,6 +137,7 @@ class App extends Component {
                 schedule = <WeekSchedule
                     taskParts={taskParts}
                     zoom={this.state.zoom}
+                    conflictsMap={conflictsMap}
                     onDayClick={this.navigateToDate.bind(this)}
                     date={this.state.selectedDate}
                     teams={this.state.teams}
@@ -158,6 +148,7 @@ class App extends Component {
             case 'day':
                 schedule = <DaySchedule
                     taskParts={taskParts}
+                    conflictsMap={conflictsMap}
                     date={this.state.selectedDate}
                     zoom={this.state.zoom}
                     teams={this.state.teams}

@@ -51,6 +51,7 @@ class WeekSchedule extends Component {
 						className='day-canvas-wrapper'
 						key={x}>
 						<DayCanvas
+							conflictsMap={this.props.conflictsMap}
 							tasks={this.props.tasks}
 							taskParts={this.props.taskParts}
 							date={moment(weekInterval.start).add(x, 'days').toDate()}

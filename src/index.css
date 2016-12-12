@@ -1,291 +1,319 @@
-html{
-	font-size: 13px; 
+html {
+    font-size: 13px;
 }
 
-.main-wrapper{
-	display: flex;
+.main-wrapper {
+    display: flex;
 }
 
-.main-wrapper>.left-area{
-	flex-grow: 0;
-	flex-basis: 300px;
-	margin-right: 1rem;
-}
-.main-wrapper>.right-area{
-	flex-grow: 1;
+.main-wrapper > .left-area {
+    flex-grow: 0;
+    flex-basis: 300px;
+    margin-right: 1rem;
 }
 
-.wo-label{
-	font-family: 'Oswald', serif;
-	font-size: 2em;
-	font-weight: bold;
-	padding: 5px 30px;
-	margin: 0px;
-	background-color: black;
-	color: white;
+.main-wrapper > .right-area {
+    flex-grow: 1;
 }
 
-.nav-box{
-	display: flex;
-	align-items: center;
-}
-.nav-interval{
-	text-align: center;
-}
-.nav-middle{
-	flex-grow: 1;
-}
-
-.left.floated{
-	float: left;
-}
-.right.floated{
-	float: right;
+.wo-label {
+    font-family: 'Oswald', serif;
+    font-size: 2em;
+    font-weight: bold;
+    padding: 5px 30px;
+    margin: 0px;
+    background-color: black;
+    color: white;
 }
 
-.no-vertical-borders{
-	border-top: none !important;
-	border-bottom: none !important;
+.nav-box {
+    display: flex;
+    align-items: center;
 }
 
-.schedule, .schedule-wrapper{
-	position: relative;
-	overflow: hidden;
+.nav-interval {
+    text-align: center;
 }
 
-.dynamic.schedule .schedule-grid{
-	border-top: none !important;
-	border-bottom: none !important;
-	border-top-left-radius: 0 !important;
-	border-top-right-radius: 0 !important;
+.nav-middle {
+    flex-grow: 1;
 }
 
-.dynamic.schedule .schedule-grid td{
-	cursor: pointer;
+.left.floated {
+    float: left;
 }
 
-.ui.table thead.narrow th{
-	padding: 6px !important;
+.right.floated {
+    float: right;
 }
 
-.dynamic.schedule{
-	display: flex;
+.no-vertical-borders {
+    border-top: none !important;
+    border-bottom: none !important;
 }
 
-.dynamic.schedule .left-ruller-wrapper{
-	border: 1px solid rgba(34,36,38,0.1);
-	border-right: 0;
-	overflow: hidden;
-	border-top-left-radius: 4px !important;
-	border-bottom-left-radius: 4px !important;
+.schedule, .schedule-wrapper {
+    position: relative;
+    overflow: hidden;
 }
 
-.dynamic.schedule .top-ruller-wrapper{
-	border: 1px solid rgba(34,36,38,0.1);
-	border-bottom: 0;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	border-top-right-radius: 4px !important;
-	border-top-left-radius: 4px !important;
+.dynamic.schedule .schedule-grid {
+    border-top: none !important;
+    border-bottom: none !important;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
 }
 
-.dynamic.schedule .left-ruller-wrapper .ui.table{
-	border: 0px !important;
+.dynamic.schedule .schedule-grid td {
+    cursor: pointer;
 }
 
-.dynamic.schedule .top-ruller-wrapper .ui.table th{
-	width: 14.28571429%;
-	border-bottom: 0 !important;
-}
-.dynamic.schedule .top-ruller-wrapper .ui.table{
-	border: 0 !important;
+.ui.table thead.narrow th {
+    padding: 6px !important;
 }
 
-.dynamic.schedule>.left-area{
-	flex-grow: 0;
+.dynamic.schedule {
+    display: flex;
 }
 
-.dynamic.schedule>.right-area{
-	flex-grow: 1;
+.dynamic.schedule .left-ruller-wrapper {
+    border: 1px solid rgba(34, 36, 38, 0.1);
+    border-right: 0;
+    overflow: hidden;
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+}
+
+.dynamic.schedule .top-ruller-wrapper {
+    border: 1px solid rgba(34, 36, 38, 0.1);
+    border-bottom: 0;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border-top-right-radius: 4px !important;
+    border-top-left-radius: 4px !important;
+}
+
+.dynamic.schedule .left-ruller-wrapper .ui.table {
+    border: 0px !important;
+}
+
+.dynamic.schedule .top-ruller-wrapper .ui.table th {
+    width: 14.28571429%;
+    border-bottom: 0 !important;
+}
+
+.dynamic.schedule .top-ruller-wrapper .ui.table {
+    border: 0 !important;
+}
+
+.dynamic.schedule > .left-area {
+    flex-grow: 0;
+}
+
+.dynamic.schedule > .right-area {
+    flex-grow: 1;
 }
 
 .dynamic.schedule .left-ruller-mover,
 .dynamic.schedule .top-ruller-mover,
-.dynamic.schedule .schedule-grid-zoomer{
-	position: relative;
-	transition: 200ms all;
+.dynamic.schedule .schedule-grid-zoomer {
+    position: relative;
+    transition: 200ms all;
 }
 
-.dynamic.schedule .schedule-grid-wrapper{
-	overflow: auto;
-	border: 1px solid rgba(34,36,38,0.1);
+.dynamic.schedule .schedule-grid-wrapper {
+    overflow: auto;
+    border: 1px solid rgba(34, 36, 38, 0.1);
 }
 
-.dynamic.schedule .schedule-grid{
-	border: 0 !important;
+.dynamic.schedule .schedule-grid {
+    border: 0 !important;
 }
 
-.year-calendar-wrapper{
-	max-height: 300px;
-	overflow: auto;
-	margin-bottom: 0.9em;
-	border-top: 1px solid rgba(34,36,38,0.1);
-	border-radius: 4px;
-	border-bottom: 1px solid rgba(34,36,38,0.1);
+.year-calendar-wrapper {
+    max-height: 300px;
+    overflow: auto;
+    margin-bottom: 0.9em;
+    border-top: 1px solid rgba(34, 36, 38, 0.1);
+    border-radius: 4px;
+    border-bottom: 1px solid rgba(34, 36, 38, 0.1);
 }
 
-.task-tile{
-	overflow: hidden;
-	box-shadow: 0 0 7px rgba(0,0,0,0.5);
-	background-color: lightgrey;
-	padding: 5px;
-	height: 100%;
-	border-width: 0 0 0 4px;
-	border-style: solid; 
-	font-size: 0.92em;
-	line-height: 1.2em;
+.task-tile {
+    overflow: hidden;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+    background-color: lightgrey;
+    padding: 5px;
+    height: 100%;
+    border-width: 0 0 0 4px;
+    border-style: solid;
+    font-size: 0.92em;
+    line-height: 1.2em;
 }
 
-.task-tile .wot-number{
-	font-weight: bold;
-	font-size: 1.1em;
+.task-tile .wot-number {
+    font-weight: bold;
+    font-size: 1.1em;
 }
 
-	.task-tile.loading-team, .task-tile.not-found-team{
-		background-color: #CCC;
-	}
- 	.task-tile.red-team{
-		background-color: rgba(255, 159, 159, 1) !important;
-	}
-	.task-tile.orange-team{
-		background-color: rgba(255, 203, 118, 1) !important;
-	}
-	.task-tile.yellow-team{
-		background-color: rgba(255, 255, 130, 1) !important;
-	}
-	.task-tile.olive-team{
-		background-color: rgba(255, 255, 114, 1) !important;
-	}
-	.task-tile.green-team{
-		background-color: rgba(145, 255, 175, 1) !important;
-	}
-	.task-tile.teal-team{
-		background-color: rgba(90, 255, 255, 1) !important;
-	}
-	.task-tile.blue-team{
-		background-color: rgba(165, 233, 255, 1) !important;
-	}
-	.task-tile.violet-team{
-		background-color: rgba(190, 143, 255, 1) !important;
-	}
-	.task-tile.purple-team{
-		background-color: rgba(253, 141, 255, 1) !important;
-	}
-	.task-tile.pink-team{
-		background-color: rgba(255, 147, 241, 1) !important;
-	}
-	.task-tile.brown-team{
-		background-color: rgba(255, 193, 153, 1) !important;
-	}
-	.task-tile.grey-team{
-		background-color: rgba(208, 208, 208, 1) !important;
-	}
-
-.task-tile.completed-status{
- 	border-color: #767676;
-}
-.task-tile.completed-with-failing-point-status{
- 	border-color: #767676;
-}
-.task-tile.pending-status{
- 	border-color: #F2711C;
-}
-.task-tile.execution-status{
- 	border-color: #21BA45;
-}
-.task-tile.failed-status{
- 	border-color: #DB2828;
-}
-.task-tile.onhold-status{
- 	border-color: #FBBD08;
+.task-tile.loading-team, .task-tile.not-found-team {
+    background-color: #CCC;
 }
 
-.status.label{
-	color: white;
+.task-tile.red-team {
+    background-color: rgba(255, 159, 159, 1) !important;
 }
 
-.ui.label.completed-status{
- 	background-color: #767676;
-}
-.ui.label.completed-with-failing-point-status{
- 	background-color: #767676;
-}
-.ui.label.pending-status{
- 	background-color: #F2711C;
-}
-.ui.label.execution-status{
- 	background-color: #21BA45;
-}
-.ui.label.failed-status{
- 	background-color: #DB2828;
-}
-.ui.label.onhold-status{
- 	background-color: #FBBD08;
+.task-tile.orange-team {
+    background-color: rgba(255, 203, 118, 1) !important;
 }
 
-.task-tile .divider{
-	margin-top: 5px;
+.task-tile.yellow-team {
+    background-color: rgba(255, 255, 130, 1) !important;
 }
 
-.task-tile .status{
-	/*text-align: center;*/
-	font-weight: bold;
-	background-color: rgba(0,0,0,0.2);
-	padding: 3px;
-	margin: 0 -5px;
+.task-tile.olive-team {
+    background-color: rgba(255, 255, 114, 1) !important;
 }
 
-.nowrap{
-	white-space: nowrap;
+.task-tile.green-team {
+    background-color: rgba(145, 255, 175, 1) !important;
 }
 
-.day-canvas{
-	height: 100%;
-	position: relative;
+.task-tile.teal-team {
+    background-color: rgba(90, 255, 255, 1) !important;
 }
 
-.day-canvas-wrapper{
-	padding: 1px;
-	width: 14.2857%;
+.task-tile.blue-team {
+    background-color: rgba(165, 233, 255, 1) !important;
+}
+
+.task-tile.violet-team {
+    background-color: rgba(190, 143, 255, 1) !important;
+}
+
+.task-tile.purple-team {
+    background-color: rgba(253, 141, 255, 1) !important;
+}
+
+.task-tile.pink-team {
+    background-color: rgba(255, 147, 241, 1) !important;
+}
+
+.task-tile.brown-team {
+    background-color: rgba(255, 193, 153, 1) !important;
+}
+
+.task-tile.grey-team {
+    background-color: rgba(208, 208, 208, 1) !important;
+}
+
+.task-tile.completed-status {
+    border-color: #767676;
+}
+
+.task-tile.completed-with-failing-point-status {
+    border-color: #767676;
+}
+
+.task-tile.pending-status {
+    border-color: #F2711C;
+}
+
+.task-tile.execution-status {
+    border-color: #21BA45;
+}
+
+.task-tile.failed-status {
+    border-color: #DB2828;
+}
+
+.task-tile.onhold-status {
+    border-color: #FBBD08;
+}
+
+.status.label {
+    color: white;
+}
+
+.ui.label.completed-status {
+    background-color: #767676;
+}
+
+.ui.label.completed-with-failing-point-status {
+    background-color: #767676;
+}
+
+.ui.label.pending-status {
+    background-color: #F2711C;
+}
+
+.ui.label.execution-status {
+    background-color: #21BA45;
+}
+
+.ui.label.failed-status {
+    background-color: #DB2828;
+}
+
+.ui.label.onhold-status {
+    background-color: #FBBD08;
+}
+
+.task-tile .divider {
+    margin-top: 5px;
+}
+
+.task-tile .status {
+    /*text-align: center;*/
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 3px;
+    margin: 0 -5px;
+}
+
+.nowrap {
+    white-space: nowrap;
+}
+
+.day-canvas {
+    height: 100%;
+    position: relative;
+}
+
+.day-canvas-wrapper {
+    padding: 1px;
+    width: 14.2857%;
     float: left;
     position: relative;
     height: 100%;
 }
 
-.clear{
-	clear: both;
+.clear {
+    clear: both;
 }
 
-.tasks-wrapper{
-	position: absolute;
-	height: 100%;
-	width: 100%;
-	left: 0px;
-	top: 0px;
+.tasks-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
 }
 
-.task-tile .time, .task-tile .team, .task-tile .team-member{
-	white-space: nowrap;
+.task-tile .time, .task-tile .team, .task-tile .team-member {
+    white-space: nowrap;
 }
 
-.conflict-sign{
-	position: absolute;
-	bottom: 0px;
-	right: 0px;
+.conflict-sign {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 
-.task-month-tile{
-	height: 100%;
+
+.task-month-tile {
+    height: 100%;
     padding-top: 5px;
     padding-right: 20px;
     padding-bottom: 0px;
@@ -295,8 +323,8 @@ html{
     text-align: left;
 }
 
-.task-month-tile .day-label{
-	position: absolute;
+.task-month-tile .day-label {
+    position: absolute;
     right: 4px;
     top: 4px;
 }

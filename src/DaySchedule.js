@@ -57,7 +57,8 @@ class DaySchedule extends Component {
 							</Table>
 
 							<div className='tasks-wrapper'>
-								<DayCanvas 
+								<DayCanvas
+									conflictsMap={this.props.conflictsMap}
 									taskParts={this.props.taskParts}
 									date={this.props.date}
 									teams={this.props.teams}

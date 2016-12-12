@@ -108,7 +108,7 @@ export function _getBoundariesSequence(taskParts) {
 	const ends = taskParts.map(taskPart =>
 		new TaskBoundary({
 			type: 'end',
-			taskPart: taskPart 
+			taskPart: taskPart
 		})
 	);
 	const boundariesSequence = starts
@@ -126,7 +126,6 @@ export function _getBoundariesSequence(taskParts) {
 }
 
 export function calculateIntersections(taskParts) {
-    console.log(taskParts);
 	const boundariesSequence = getBoundariesSequence(taskParts);
 	const heap = [];
 	const intersections = {};
@@ -176,7 +175,27 @@ export function _getBoundaryIntervals(taskParts) {
 	return intervals;
 }
 
-export function calculateConflicts(taskParts) {
-	const intersections = calculateIntersections(taskParts);
-	return intersections;
+export function calculateConflicts(intervals, tasks) {
+    let conflictsMap = {};
+
+	intervals.forEach(
+        interval => {
+            const hasConflicts = hasDuplicates(
+                interval.taskParts
+                    .map(taskPart => tasks.filter(t => t.id === taskPart.taskID)[0])
+                    .map(x => x.teamID + " " + x.teamMember)
+            );
+            if(hasConflicts){
+                interval.taskParts.forEach(
+                    taskPart => conflictsMap[taskPart.taskID] = true
+                );
+            }
+        }
+    );
+
+	return conflictsMap;
+}
+
+function hasDuplicates(a) {
+    return _.uniq(a).length !== a.length;
 }

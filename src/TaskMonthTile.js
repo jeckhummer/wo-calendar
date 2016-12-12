@@ -23,12 +23,15 @@ class TaskMonthTile extends Component {
 					<div key={status} className={'ui circular  label status ' + status + '-status'} > {stats[status]} </div>
 				)
 		);
+		console.log(taskParts.filter(x => x.hasConflicts === true).length);
 
-		const conflictLabel = (
+		const conflictLabel = taskParts.filter(x => x.hasConflicts === true).length > 0
+		? (
 			<span className="conflict-sign">
 				<i className="red warning circle icon"></i>
 			</span>
-		); 
+		)
+		: null;
 
 		// console.log(taskParts);
 
