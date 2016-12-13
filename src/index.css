@@ -8,7 +8,7 @@ html {
 
 .main-wrapper > .left-area {
     flex-grow: 0;
-    flex-basis: 300px;
+    flex-basis: 264px;
     margin-right: 1rem;
 }
 
@@ -140,6 +140,7 @@ html {
 }
 
 .task-tile {
+    cursor: pointer;
     overflow: hidden;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
     background-color: lightgrey;
