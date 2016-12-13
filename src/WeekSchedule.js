@@ -51,6 +51,7 @@ class WeekSchedule extends Component {
 						className='day-canvas-wrapper'
 						key={x}>
 						<DayCanvas
+							taskSelectionCallback={this.props.taskSelectionCallback}
 							conflictsMap={this.props.conflictsMap}
 							tasks={this.props.tasks}
 							taskParts={this.props.taskParts}

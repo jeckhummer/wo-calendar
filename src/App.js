@@ -5,6 +5,7 @@ import MonthSchedule from './MonthSchedule';
 import WeekSchedule from './WeekSchedule';
 import DaySchedule from './DaySchedule';
 import TeamFilter from './TeamFilter.component';
+import SelectedTaskDetailsModal from './SelectedTaskDetailsModal';
 import * as TasksManager from './TasksManager';
 import * as TeamsManager from './TeamsManager';
 import {Dimmer, Loader} from 'semantic-ui-react';
@@ -26,6 +27,8 @@ class App extends Component {
             teams: [],
             teamsFilter: null,
             zoom: 1,
+            detailsVisible: true,
+            selectedTaskID: null,
             dayOptions: {
                 cellHeight: 100,
                 rowsVisible: 5
@@ -49,12 +52,13 @@ class App extends Component {
         this.setState({loadingTasks: true});
 
         API.getTasksDataPromise()
-            .then(tasksData =>
+            .then(tasksData => {
+                const tasks = TasksManager.createTasks(tasksData);
                 this.setState({
-                    tasks: TasksManager.createTasks(tasksData),
+                    tasks,
                     loadingTasks: false
                 })
-            );
+            });
     }
 
     loadTeams() {
@@ -99,6 +103,28 @@ class App extends Component {
         this.setState({selectedDate: date, mode});
     }
 
+    setDetailsVisibility(isVisible) {
+        this.setState({detailsVisible: isVisible});
+    }
+
+    hideDetails(){
+        this.setDetailsVisibility(false);
+    }
+
+    selectTask(taskID){
+        this.setState({selectedTaskID: taskID});
+        this.setDetailsVisibility(true);
+    }
+
+    getTask(taskID){
+        const filteredTasks = this.state.tasks.filter(t => t.id === taskID);
+        const task = filteredTasks.length !== 0
+            ? filteredTasks[0]
+            : null;
+
+        return task;
+    }
+
     render() {
         let schedule;
         const tasksSortedByStartDate = TasksManager.sortTasksByStartDates(this.state.tasks);
@@ -135,6 +161,7 @@ class App extends Component {
 
             case 'week':
                 schedule = <WeekSchedule
+                    taskSelectionCallback={this.selectTask.bind(this)}
                     taskParts={taskParts}
                     zoom={this.state.zoom}
                     conflictsMap={conflictsMap}
@@ -147,6 +174,7 @@ class App extends Component {
 
             case 'day':
                 schedule = <DaySchedule
+                    taskSelectionCallback={this.selectTask.bind(this)}
                     taskParts={taskParts}
                     conflictsMap={conflictsMap}
                     date={this.state.selectedDate}
@@ -161,9 +189,31 @@ class App extends Component {
                 break;
         }
 
+        const selectedTaskID = this.state.selectedTaskID;
+        let taskDetailsModal = null;
+
+        if(selectedTaskID !== null){
+            const selectedTask = this.getTask(selectedTaskID);
+
+            if(selectedTask === null){
+                throw new Error(`No task with id = ${selectedTaskID} found!`);
+            } else {
+                taskDetailsModal = (
+                    <SelectedTaskDetailsModal
+                        selectedTask={selectedTask}
+                        open={this.state.detailsVisible}
+                        onClose={this.hideDetails.bind(this)}
+                        teams={this.state.teams}
+                    />
+                );
+            }
+        }
+
         return (
             <div className='main-wrapper'>
                 <div className='left-area'>
+                    {taskDetailsModal}
+
                     <MiniCalendar
                         onDateClick={this.navigateToDate.bind(this)}
                         selectedDate={this.state.selectedDate}

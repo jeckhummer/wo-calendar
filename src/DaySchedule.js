@@ -43,7 +43,7 @@ class DaySchedule extends Component {
 				</div>
 				<div className="right-area">
 					<div 
-						className="schedule-grid-wrapper" 
+						className="schedule-grid-wrapper"
 						style={{ maxHeight: this.props.rowsVisible * this.props.cellHeight + "px" }} 
 						ref={(x) => this.wrapper = x}>
 						<div 
@@ -58,6 +58,7 @@ class DaySchedule extends Component {
 
 							<div className='tasks-wrapper'>
 								<DayCanvas
+                                    taskSelectionCallback={this.props.taskSelectionCallback}
 									conflictsMap={this.props.conflictsMap}
 									taskParts={this.props.taskParts}
 									date={this.props.date}

@@ -25,7 +25,9 @@ class DayCanvas extends Component{
 							position: "absolute",
 							...positionsStyle
 						}}>
-						<TaskTile 
+
+						<TaskTile
+							onClick={() => this.props.taskSelectionCallback(x.task.id)}
 							data={x.task}
 							hasConflict={this.props.conflictsMap[x.task.id] === true}
 							teams={this.props.teams}

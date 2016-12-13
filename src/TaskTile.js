@@ -38,6 +38,7 @@ class TaskTile extends Component {
 
         return (
             <div
+                onClick={this.props.onClick}
                 className={`task-tile ${teamColor}-team ${statusColor}-status`}
                 style={this.props.style}>
 
