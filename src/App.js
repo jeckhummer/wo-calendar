@@ -4,6 +4,7 @@ import MiniCalendar from './MiniCalendar';
 import MonthSchedule from './MonthSchedule';
 import WeekSchedule from './WeekSchedule';
 import DaySchedule from './DaySchedule';
+import AgendaSchedule from './AgendaSchedule';
 import TeamFilter from './TeamFilter.component';
 import SelectedTaskDetailsModal from './SelectedTaskDetailsModal';
 import * as TasksManager from './TasksManager';
@@ -19,7 +20,7 @@ class App extends Component {
         super(props, context);
 
         this.state = {
-            mode: 'week',
+            mode: 'agenda',
             loadingTasks: false,
             loadingTeamsFilter: false,
             selectedDate: new Date('15 Nov 2016 11:00:00'),
@@ -149,6 +150,8 @@ class App extends Component {
             }
         );
 
+
+
         switch (this.state.mode) {
             default:
             case 'month':
@@ -185,7 +188,7 @@ class App extends Component {
                 break;
 
             case 'agenda':
-                schedule = <MonthSchedule date={this.state.selectedDate}/>;
+                schedule = <AgendaSchedule taskParts={taskParts} />;
                 break;
         }
 
