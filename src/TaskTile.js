@@ -64,10 +64,10 @@ class TaskTile extends Component {
 
                 <div className="time">
                     <Icon name="calendar"/>
-                    <b>{moment(this.props.data.start).format('hh:mm D MMM')}</b>
+                    <b>{moment(this.props.data.start).format('HH:mm D MMM')}</b>
                     <br />
                     <Icon name="calendar"/>
-                    <b>{moment(this.props.data.end).format('hh:mm D MMM')}</b>
+                    <b>{moment(this.props.data.end).format('HH:mm D MMM')}</b>
                 </div>
 
                 <div className="divider"></div>
