@@ -1,5 +1,5 @@
 import moment from 'moment';
-import _ from 'lodash';
+import * as _ from 'lodash';
 import {Task} from './Task';
 import {TaskPart} from './TaskPart';
 import {TaskBoundary} from './TaskBoundary';
@@ -22,7 +22,7 @@ export function filterTasksByTeam(tasks, teamsFilter){
 }
 
 export function separateTasksByDays(tasks) {
-	return _.concat(...tasks
+	return _.flatten(tasks
 		.map(x => _.range(moment(x.end).startOf('day').diff(moment(x.start).startOf('day'), 'days') + 1)
 			.map(i => {
 				return {
