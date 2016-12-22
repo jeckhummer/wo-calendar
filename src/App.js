@@ -177,18 +177,26 @@ class App extends Component {
 
             case 'day':
                 schedule = <DaySchedule
-                    taskSelectionCallback={this.selectTask.bind(this)}
                     taskParts={taskParts}
+                    taskSelectionCallback={this.selectTask.bind(this)}
                     conflictsMap={conflictsMap}
+                    teams={this.state.teams}
                     date={this.state.selectedDate}
                     zoom={this.state.zoom}
-                    teams={this.state.teams}
                     cellHeight={this.state.dayOptions.cellHeight}
                     rowsVisible={this.state.dayOptions.rowsVisible}/>;
                 break;
 
             case 'agenda':
-                schedule = <AgendaSchedule taskParts={taskParts} />;
+                schedule = (
+                    <div style={{overflow: 'auto', height: '500px'}}>
+                        <AgendaSchedule
+                            taskParts={taskParts}
+                            conflictsMap={conflictsMap}
+                            teams={this.state.teams}
+                        />
+                    </div>
+                );
                 break;
         }
 

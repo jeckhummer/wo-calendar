@@ -3,7 +3,7 @@ import {Icon} from 'semantic-ui-react';
 import moment from 'moment';
 import * as TeamsManager from './TeamsManager';
 
-class TaskTile extends Component {
+class AgendaTaskTile extends Component {
     render() {
         const stubTeam = TeamsManager.createTeam({
             id: 0,
@@ -36,52 +36,56 @@ class TaskTile extends Component {
         ? ( <i className="red warning circle icon"></i> )
         : null;
 
+        const teamMember = this.props.data.teamMember
+            ? <span className="team-member"> &nbsp; by {this.props.data.teamMember} </span>
+            : null;
+
         return (
             <div
-                onClick={this.props.onClick}
                 className={`task-tile ${teamColor}-team ${statusColor}-status`}
-                style={this.props.style}>
+                style={{
+                    ...this.props.style,
+                    cursor: 'default'
+                }}>
 
-                <div className="wot-number">
-                    WOT {this.props.data.id}
-                </div>
-
-                <div className="divider"></div>
-
-                <div className="status">
+            <div className="wot-number">
                     {conflictLabel}
+                    WOT {this.props.data.id}
+                    &nbsp; - &nbsp;
                     {this.props.data.status}
+                    &nbsp; - &nbsp;
+                    {this.props.data.phase}
+                    &nbsp; - &nbsp;
+                    WO {this.props.data.WONumber}
                 </div>
 
                 <div className="divider"></div>
                 <div className="test"></div>
 
                 <div className="description">
-                    {this.props.data.description.substring(0, 50) + (this.props.data.description.length > 50 ? "..." : "")}
+                    {this.props.data.description}
                 </div>
 
                 <div className="divider"></div>
 
                 <div className="time">
                     <Icon name="calendar"/>
+
                     <b>{moment(this.props.data.start).format('D MMM HH:mm')}</b>
-                    <br />
-                    <Icon name="calendar"/>
+                    &nbsp; - &nbsp;
                     <b>{moment(this.props.data.end).format('D MMM HH:mm')}</b>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span className="team">
+                        <Icon name="user"/>
+                        <b>{team.name}</b>
+                    </span>
+
+                    {teamMember}
                 </div>
 
-                <div className="divider"></div>
-
-                <div className="team">
-                    <Icon name="user"/>
-                    {team.name}
-                </div>
-                <div className="team-member" style={{display: this.props.data.teamMember !== null ? 'block' : 'none'}}>
-                    by {this.props.data.teamMember}
-                </div>
             </div>
         );
     }
 }
 
-export default TaskTile;
+export default AgendaTaskTile;

@@ -11,8 +11,6 @@ class DateInterval{
 	}
 
 	getPositionIn(outterInterval, accuracy){
-		// console.log('this', this, 'outter', outterInterval);
-		// console.log(this.getLength(accuracy), outterInterval.getLength(accuracy));
 		return {
 			offset: new DateInterval(outterInterval.start, this.start).getLength(accuracy) / 
 				outterInterval.getLength(accuracy) 

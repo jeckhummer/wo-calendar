@@ -21,7 +21,7 @@ class Agenda extends Component {
                         <Table.Cell active collapsing>
                             {item.startTime} - {item.endTime}
                         </Table.Cell>
-                        <Table.Cell>
+                        <Table.Cell style={{padding: '0px'}}>
                             {item.content}
                         </Table.Cell>
                     </Table.Row>

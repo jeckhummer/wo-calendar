@@ -8,8 +8,7 @@ const tasks = [
 		teamID: '2',
 		teamMember: 'Teymur Ordukhanov',
 		phase: 'Execution',
-		status: 'Execution',
-		conflict: { tasks: [ 95, 94 ] }
+		status: 'Execution'
 	},
 	{
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse libero alias, ab placeat vel quibusdam facere obcaecati ex, saepe fugiat.',
@@ -20,8 +19,7 @@ const tasks = [
 		teamID: '2',
 		teamMember: 'Teymur Ordukhanov',
 		phase: 'Execution',
-		status: 'Failed',
-		conflict: { tasks: [ 95, 94 ] }
+		status: 'Failed'
 	},
 	{
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse libero alias, ab placeat vel quibusdam facere obcaecati ex, saepe fugiat.',
@@ -32,8 +30,7 @@ const tasks = [
 		teamID: '1',
 		teamMember: 'Teymur Ordukhanov',
 		phase: 'Execution',
-		status: 'Pending',
-		conflict: { tasks: [ 95, 94 ] }
+		status: 'Pending'
 	},
 	{
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse libero alias, ab placeat vel quibusdam facere obcaecati ex, saepe fugiat.',
@@ -44,8 +41,7 @@ const tasks = [
 		teamID: '4',
 		teamMember: 'Sattar Seyidov',
 		phase: 'Execution',
-		status: 'Onhold',
-		conflict: { tasks: [ 95, 94 ] }
+		status: 'Onhold'
 	},
 	{
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse libero alias, ab placeat vel quibusdam facere obcaecati ex, saepe fugiat.',
@@ -56,8 +52,7 @@ const tasks = [
 		teamID: '3',
 		teamMember: 'Sattar Seyidov',
 		phase: 'Execution',
-		status: 'Completed',
-		conflict: { tasks: [ 95, 94 ] }
+		status: 'Completed'
 	},
 	{
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse libero alias, ab placeat vel quibusdam facere obcaecati ex, saepe fugiat.',
@@ -66,10 +61,9 @@ const tasks = [
 		start: new Date('17 Nov 2016 08:45:00'),
 		end: new Date('17 Nov 2016 12:00:00'),
 		teamID: '1',
-		teamMember: 'Sattar Seyidov',
+		teamMember: null,
 		phase: 'Execution',
-		status: 'Completed with failing point',
-		conflict: { tasks: [ 95, 94 ] }
+		status: 'Completed with failing point'
 	},
 	{
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse libero alias, ab placeat vel quibusdam facere obcaecati ex, saepe fugiat.',
@@ -80,8 +74,7 @@ const tasks = [
 		teamID: '3',
 		teamMember: 'Teymur Mustafayev',
 		phase: 'Execution',
-		status: 'Execution',
-		conflict: { tasks: [ 95, 94 ] }
+		status: 'Execution'
 	},
 	{
 		description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse libero alias, ab placeat vel quibusdam facere obcaecati ex, saepe fugiat.',
@@ -92,8 +85,7 @@ const tasks = [
 		teamID: '2',
 		teamMember: 'Teymur Mustafayev',
 		phase: 'Execution',
-		status: 'Execution',
-		conflict: { tasks: [ 95, 94 ] }
+		status: 'Execution'
 	},
 ];
 

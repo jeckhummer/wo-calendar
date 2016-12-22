@@ -8,7 +8,6 @@ export class Task{
 		this.teamID = taskData.teamID; 
 		this.teamMember = taskData.teamMember; 
 		this.phase = taskData.phase; 
-		this.status = taskData.status; 
-		this.conflict = taskData.conflict; 
+		this.status = taskData.status;
 	}
 }

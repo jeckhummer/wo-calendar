@@ -49,11 +49,11 @@ class Nav extends Component {
 			<Menu icon borderless>
 				<Menu.Menu>
 					<Menu.Item onClick={() => this.props.onZoomChange(0.5)}>
-						<Icon fitted disabled={zoomDisabled} name="zoom"></Icon>
+						<Icon fitted disabled={zoomDisabled} name="zoom"/>
 					</Menu.Item>
 
 					<Menu.Item onClick={() => this.props.onZoomChange(-0.5)}>
-						<Icon fitted disabled={zoomDisabled || this.props.zoom === 1} name="zoom out"></Icon>
+						<Icon fitted disabled={zoomDisabled || this.props.zoom === 1} name="zoom out"/>
 					</Menu.Item>
 
 					<Menu.Item onClick={this.props.onTodayClick}>
@@ -63,7 +63,10 @@ class Nav extends Component {
 
 				<Menu.Menu position='right'>
 					<Menu.Item onClick={navigatePrev}>
-						<Icon fitted name="left arrow"></Icon>
+						<Icon
+                            disabled={this.props.mode === 'agenda'}
+                            fitted
+                            name="left arrow"/>
 					</Menu.Item>
 
 					<Menu.Item className='nowrap'>
@@ -71,7 +74,10 @@ class Nav extends Component {
 					</Menu.Item>
 
 					<Menu.Item onClick={navigateNext}>
-						<Icon fitted name="right arrow"></Icon>
+                        <Icon
+                            disabled={this.props.mode === 'agenda'}
+                            fitted
+                            name="right arrow"/>
 					</Menu.Item>
 				</Menu.Menu>
 
