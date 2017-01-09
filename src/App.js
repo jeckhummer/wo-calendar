@@ -12,7 +12,7 @@ import * as TeamsManager from './TeamsManager';
 import {Dimmer, Loader} from 'semantic-ui-react';
 import moment from 'moment';
 
-import * as API from './MockAPI';
+import {API} from './CurrentAPI';
 
 class App extends Component {
 
@@ -20,7 +20,7 @@ class App extends Component {
         super(props, context);
 
         this.state = {
-            mode: 'agenda',
+            mode: 'month',
             loadingTasks: false,
             loadingTeamsFilter: false,
             selectedDate: new Date('15 Nov 2016 11:00:00'),

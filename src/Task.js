@@ -3,8 +3,8 @@ export class Task{
 		this.id = taskData.WOTNumber; 
 		this.description = taskData.description; 
 		this.WONumber = taskData.WONumber; 
-		this.start = taskData.start; 
-		this.end = taskData.end;
+		this.start = new Date(taskData.start);
+		this.end = new Date(taskData.end);
 		this.teamID = taskData.teamID; 
 		this.teamMember = taskData.teamMember; 
 		this.phase = taskData.phase; 

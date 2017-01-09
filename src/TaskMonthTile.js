@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-// import * as TasksManager from './TasksManager'; 
 import _ from 'lodash';
 
 class TaskMonthTile extends Component {
@@ -23,7 +22,6 @@ class TaskMonthTile extends Component {
 					<div key={status} className={'ui circular  label status ' + status + '-status'} > {stats[status]} </div>
 				)
 		);
-		console.log(taskParts.filter(x => x.hasConflicts === true).length);
 
 		const conflictLabel = taskParts.filter(x => x.hasConflicts === true).length > 0
 		? (
@@ -32,8 +30,6 @@ class TaskMonthTile extends Component {
 			</span>
 		)
 		: null;
-
-		// console.log(taskParts);
 
 		return (
 			<div className="task-month-tile">
