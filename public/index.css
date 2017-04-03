@@ -16,16 +16,6 @@ html {
     flex-grow: 1;
 }
 
-.wo-label {
-    font-family: 'Oswald', serif;
-    font-size: 2em;
-    font-weight: bold;
-    padding: 5px 30px;
-    margin: 0px;
-    background-color: black;
-    color: white;
-}
-
 .nav-box {
     display: flex;
     align-items: center;
@@ -157,80 +147,30 @@ html {
     font-size: 1.1em;
 }
 
-.task-tile.loading-team, .task-tile.not-found-team {
-    background-color: #CCC;
+.task-tile.light_orange {
+    border-color: orange;
 }
 
-.task-tile.red-team {
-    background-color: rgba(255, 159, 159, 1) !important;
+.task-tile.light_grey {
+    border-color: lightgrey;
 }
 
-.task-tile.orange-team {
-    background-color: rgba(255, 203, 118, 1) !important;
+.task-tile.orange {
+    border-color: orangered;
 }
 
-.task-tile.yellow-team {
-    background-color: rgba(255, 255, 130, 1) !important;
+.task-tile.red{
+    border-color: red;
 }
 
-.task-tile.olive-team {
-    background-color: rgba(255, 255, 114, 1) !important;
+.task-tile.grey{
+    border-color: grey;
 }
-
-.task-tile.green-team {
-    background-color: rgba(145, 255, 175, 1) !important;
+.task-tile.green{
+    border-color: green;
 }
-
-.task-tile.teal-team {
-    background-color: rgba(90, 255, 255, 1) !important;
-}
-
-.task-tile.blue-team {
-    background-color: rgba(165, 233, 255, 1) !important;
-}
-
-.task-tile.violet-team {
-    background-color: rgba(190, 143, 255, 1) !important;
-}
-
-.task-tile.purple-team {
-    background-color: rgba(253, 141, 255, 1) !important;
-}
-
-.task-tile.pink-team {
-    background-color: rgba(255, 147, 241, 1) !important;
-}
-
-.task-tile.brown-team {
-    background-color: rgba(255, 193, 153, 1) !important;
-}
-
-.task-tile.grey-team {
-    background-color: rgba(208, 208, 208, 1) !important;
-}
-
-.task-tile.completed-status {
-    border-color: #767676;
-}
-
-.task-tile.completed-with-failing-point-status {
-    border-color: #767676;
-}
-
-.task-tile.pending-status {
-    border-color: #F2711C;
-}
-
-.task-tile.execution-status {
-    border-color: #21BA45;
-}
-
-.task-tile.failed-status {
-    border-color: #DB2828;
-}
-
-.task-tile.onhold-status {
-    border-color: #FBBD08;
+.task-tile.yellow{
+    border-color: yellow;
 }
 
 .status.label {
@@ -245,7 +185,7 @@ html {
     background-color: #767676;
 }
 
-.ui.label.pending-status {
+.ui.label.task-pending-status {
     background-color: #F2711C;
 }
 
@@ -315,10 +255,7 @@ html {
 
 .task-month-tile {
     height: 100%;
-    padding-top: 5px;
-    padding-right: 20px;
-    padding-bottom: 0px;
-    padding-left: 5px;
+    padding: 5px 20px 0px 5px;
     cursor: pointer;
     position: relative;
     text-align: left;

@@ -3,6 +3,7 @@ import DateInterval from './DateInterval';
 import moment from 'moment';
 import TaskTile from './TaskTile';
 import _ from 'lodash';
+import {calculateTasksParts} from "./selectors";
 
 class DayCanvas extends Component{
 	render(){
@@ -11,13 +12,14 @@ class DayCanvas extends Component{
 			moment(this.props.date).endOf('day').toDate()
 		);
 
-		const taskParts = this.props.taskParts
-			.filter(x => x.start >= dayInterval.start && x.end <= dayInterval.end );
+		const tasks = this.props.tasks
+			.filter(x => x.start >= dayInterval.start && x.end <= dayInterval.end);
+
+        const taskParts = calculateTasksParts({tasks, teamsFilter: this.props.teamsFilter});
 
 		const tiles = taskParts
 			.map((x, i) => {
 				const positionsStyle = this.getTaskPartPosition(x, dayInterval);
-
 				return (
 					<div 
 						key={i}
@@ -29,7 +31,7 @@ class DayCanvas extends Component{
 						<TaskTile
 							onClick={() => this.props.taskSelectionCallback(x.task.id)}
 							data={x.task}
-							hasConflict={this.props.conflictsMap[x.task.id] === true}
+							hasConflict={x.hasConflicts === true}
 							teams={this.props.teams}
 						/>
 					</div>

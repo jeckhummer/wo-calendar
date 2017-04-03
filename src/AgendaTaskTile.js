@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Icon} from 'semantic-ui-react';
 import moment from 'moment';
 import * as TeamsManager from './TeamsManager';
+import {teamIdToColorMapper, statusToColorMapper} from "./Utils";
 
 class AgendaTaskTile extends Component {
     render() {
@@ -25,12 +26,15 @@ class AgendaTaskTile extends Component {
             if (tmp.length === 0) {
                 team = notFoundTeam;
             } else {
-                team = tmp[0];
+                team = {
+                    ...tmp[0],
+                    color: teamIdToColorMapper(tmp[0].id, this.props.teams.map(x => x.id))
+                };
             }
         }
 
         const teamColor = team.color;
-        const statusColor = this.props.data.status.toLowerCase().replace(/\s/g, '-');
+        const statusColor = statusToColorMapper(this.props.data.status);
 
         const conflictLabel = this.props.hasConflict
         ? ( <i className="red warning circle icon"></i> )
@@ -42,21 +46,23 @@ class AgendaTaskTile extends Component {
 
         return (
             <div
-                className={`task-tile ${teamColor}-team ${statusColor}-status`}
+                className={`task-tile`}
                 style={{
                     ...this.props.style,
-                    cursor: 'default'
+                    borderColor: statusColor,
+                    cursor: 'default',
+                    backgroundColor: teamColor
                 }}>
 
             <div className="wot-number">
                     {conflictLabel}
-                    WOT {this.props.data.id}
+                    {this.props.data.WOTDisplayNumber}
                     &nbsp; - &nbsp;
                     {this.props.data.status}
                     &nbsp; - &nbsp;
                     {this.props.data.phase}
                     &nbsp; - &nbsp;
-                    WO {this.props.data.WONumber}
+                    {this.props.data.WODisplayNumber}
                 </div>
 
                 <div className="divider"></div>

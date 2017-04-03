@@ -11,11 +11,15 @@ class TaskDetailsModal extends Component {
                 onClose={this.props.onClose}>
 
                 <Modal.Header>
-                    WOT #{this.props.WOTNumber}
+                    <a href={"EntryPoint2.aspx?DOCID="+ this.props.WONumber +"&WOTID=" + this.props.WOTNumber}>
+                        {this.props.WOTDisplayNumber}
+                    </a>
                     &nbsp;
                     /
                     &nbsp;
-                    WO #{this.props.WONumber}
+                    <a href={"EntryPoint2.aspx?DOCID="+ this.props.WONumber}>
+                        {this.props.WODisplayNumber}
+                    </a>
 
                     <Floated right>
                         <Icon
@@ -50,7 +54,7 @@ class TaskDetailsModal extends Component {
                                     <Label
                                         empty
                                         circular
-                                        color={this.props.teamColor}
+                                        color={this.props.teamColor || 'grey'}
                                     />
                                     &nbsp; &nbsp;
                                     {this.props.teamName}

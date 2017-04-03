@@ -14,7 +14,7 @@ export function getTeamsDataPromise(){
 	const deferred = $.Deferred();
 	setTimeout(
 		() => deferred.resolve(Mocks.teams),
-		2 * 1000
+		0 * 1000
 	);
 	return deferred.promise();
 }

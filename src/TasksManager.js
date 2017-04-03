@@ -14,7 +14,7 @@ export function createTask(taskData){
 }
 
 export function filterTasksByTeam(tasks, teamsFilter){
-	if(teamsFilter == null){
+	if(teamsFilter === null){
 		return tasks.slice();
 	} else {
 		return tasks.filter(task => teamsFilter.isActive(task.teamID));
@@ -23,7 +23,7 @@ export function filterTasksByTeam(tasks, teamsFilter){
 
 export function separateTasksByDays(tasks) {
 	return _.flatten(tasks
-		.map(x => _.range(moment(x.end).startOf('day').diff(moment(x.start).startOf('day'), 'days') + 1)
+		.map(x => _.range(moment(x.end).add(-1, 'milliseconds').startOf('day').diff(moment(x.start).startOf('day'), 'days') + 1)
 			.map(i => {
 				return {
 					task: x,
@@ -32,15 +32,16 @@ export function separateTasksByDays(tasks) {
 						x.start :
 						moment(x.start)
 							.add(i, 'days')
-							.hour(8)
+							.hour(0)
 							.minutes(0)
 							.toDate(),
 					end: i === moment(x.end).startOf('day').diff(moment(x.start).startOf('day'), 'days') ?
 						x.end :
 						moment(x.start)
 							.add(i, 'days')
-							.hour(19)
-							.minutes(0)
+							.hour(23)
+                            .minutes(59)
+                            .seconds(59)
 							.toDate(),
 				};
 			})
@@ -56,7 +57,7 @@ export function sortTasksByStartDates(tasks) {
 
 export function _separateTasksByDays(tasks) {
 	return _.concat(...tasks
-		.map(task => _.range(moment(task.end).startOf('day').diff(moment(task.start).startOf('day'), 'days') + 1)
+		.map(task => _.range(moment(task.end).add(-1, 'milliseconds').startOf('day').diff(moment(task.start).startOf('day'), 'days') + 1)
 			.map(i => 
 				new TaskPart({
 					taskID: task.id,
@@ -65,15 +66,16 @@ export function _separateTasksByDays(tasks) {
 						? task.start 
 						: moment(task.start)
 							.add(i, 'days')
-							.hour(8)
+							.hour(0)
 							.minutes(0)
 							.toDate(),
 					end: i === moment(task.end).startOf('day').diff(moment(task.start).startOf('day'), 'days') 
 						? task.end 
 						: moment(task.start)
 							.add(i, 'days')
-							.hour(19)
-							.minutes(0)
+							.hour(23)
+							.minutes(59)
+                            .seconds(59)
 							.toDate(),
 				})
 			)
@@ -144,7 +146,7 @@ export function calculateIntersections(taskParts) {
 	return intersections;
 }
 
-export function _getBoundaryIntervals(taskParts) {
+export function getBoundaryIntervals(taskParts) {
 	const boundariesSequence = _getBoundariesSequence(taskParts);
 	const taskPartsHeap = [];
 	const intervals = [];

@@ -14,8 +14,9 @@ class MonthSchedule extends CalendarBase {
 					style={{height: this.props.cellHeight + "px"}}
 					onClick={() => this.props.onDayClick(c.date, 'day')}
 					disabled={c.outOfRange}>
-						<TaskMonthTile 
-							taskParts={this.props.taskParts}
+						<TaskMonthTile
+							teamsFilter={this.props.teamsFilter}
+							tasks={this.props.tasks}
 							date={c.date}
 						/>
 				</Table.Cell>

@@ -2,18 +2,19 @@ import React, {Component} from 'react';
 import {Icon} from 'semantic-ui-react';
 import moment from 'moment';
 import * as TeamsManager from './TeamsManager';
+import {teamIdToColorMapper, statusToColorMapper} from "./Utils";
 
 class TaskTile extends Component {
     render() {
         const stubTeam = TeamsManager.createTeam({
             id: 0,
             name: 'Loading...',
-            color: 'loading'
+            color: 'white'
         });
         const notFoundTeam = TeamsManager.createTeam({
             id: 0,
             name: 'Error',
-            color: 'not-found'
+            color: 'white'
         });
 
         let team;
@@ -25,12 +26,15 @@ class TaskTile extends Component {
             if (tmp.length === 0) {
                 team = notFoundTeam;
             } else {
-                team = tmp[0];
+                team = {
+                    ...tmp[0],
+                    color: teamIdToColorMapper(tmp[0].id, this.props.teams.map(x => x.id))
+                };
             }
         }
 
         const teamColor = team.color;
-        const statusColor = this.props.data.status.toLowerCase().replace(/\s/g, '-');
+        const statusColor = statusToColorMapper(this.props.data.status);
 
         const conflictLabel = this.props.hasConflict
         ? ( <i className="red warning circle icon"></i> )
@@ -39,11 +43,15 @@ class TaskTile extends Component {
         return (
             <div
                 onClick={this.props.onClick}
-                className={`task-tile ${teamColor}-team ${statusColor}-status`}
-                style={this.props.style}>
+                className={`task-tile`}
+                style={{
+                    ...this.props.style,
+                    borderColor: statusColor,
+                    backgroundColor: teamColor
+                }}>
 
                 <div className="wot-number">
-                    WOT {this.props.data.id}
+                    {this.props.data.WOTDisplayNumber}
                 </div>
 
                 <div className="divider"></div>

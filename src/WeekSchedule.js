@@ -6,6 +6,7 @@ import HourRuler from './HourRuler';
 import WeekDaysRuler from './WeekDaysRuler';
 import DateInterval from './DateInterval';
 import DayCanvas from './DayCanvas';
+import {calculateTasksParts} from "./selectors";
 
 class WeekSchedule extends Component {
 	componentDidMount() {
@@ -52,9 +53,8 @@ class WeekSchedule extends Component {
 						key={x}>
 						<DayCanvas
 							taskSelectionCallback={this.props.taskSelectionCallback}
-							conflictsMap={this.props.conflictsMap}
 							tasks={this.props.tasks}
-							taskParts={this.props.taskParts}
+                            teamsFilter={this.props.teamsFilter}
 							date={moment(weekInterval.start).add(x, 'days').toDate()}
 							teams={this.props.teams}
 						/>

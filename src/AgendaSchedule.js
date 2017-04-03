@@ -4,6 +4,7 @@ import * as _ from 'lodash';
 import moment from 'moment';
 import {Header, Icon} from 'semantic-ui-react';
 import AgendaTaskTile from "./AgendaTaskTile";
+import {calculateTasksParts} from "./selectors";
 
 class AgendaSchedule extends Component {
     createAgendaDays(taskParts){
@@ -27,14 +28,16 @@ class AgendaSchedule extends Component {
             <AgendaTaskTile
                 onClick={() => this.props.taskSelectionCallback(taskPart.task.id)}
                 data={taskPart.task}
-                hasConflict={this.props.conflictsMap[taskPart.task.id] === true}
+                hasConflict={taskPart.hasConflicts}
                 teams={this.props.teams}
             />
         );
     }
 
     render() {
-        const taskParts = this.props.taskParts.filter(x => x.start > new Date());
+        const tasks = this.props.tasks.filter(x => x.end > new Date());
+        const taskParts = calculateTasksParts({tasks, teamsFilter: this.props.teamsFilter});
+
         if(taskParts.length === 0){
             return (
                 <div style={{paddingTop: "10px"}}>

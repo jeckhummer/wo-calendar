@@ -11,19 +11,22 @@ import * as TasksManager from './TasksManager';
 import * as TeamsManager from './TeamsManager';
 import {Dimmer, Loader} from 'semantic-ui-react';
 import moment from 'moment';
+import {calculateTasksParts} from './selectors';
 
 import {API} from './CurrentAPI';
 
-class App extends Component {
 
+
+class App extends Component {
     constructor(props, context) {
         super(props, context);
 
         this.state = {
-            mode: 'month',
+            mode: 'week',
             loadingTasks: false,
             loadingTeamsFilter: false,
-            selectedDate: new Date('15 Nov 2016 11:00:00'),
+            // selectedDate: new Date('17 Mar 2017 11:00:00'),
+            selectedDate: new Date(),
             tasks: [],
             teams: [],
             teamsFilter: null,
@@ -126,37 +129,18 @@ class App extends Component {
         return task;
     }
 
+
     render() {
         let schedule;
-        const tasksSortedByStartDate = TasksManager.sortTasksByStartDates(this.state.tasks);
-        const filteredTasks = TasksManager.filterTasksByTeam(tasksSortedByStartDate, this.state.teamsFilter);
-
-        let taskParts = TasksManager.separateTasksByDays(filteredTasks);
-        const intersections = TasksManager.calculateIntersections(taskParts);
-
-
-        const conflictsMap = TasksManager.calculateConflicts(
-            TasksManager._getBoundaryIntervals(
-                TasksManager._separateTasksByDays(filteredTasks)
-            ),
-            this.state.tasks
-        );
-
-        taskParts.forEach(
-            x => {
-                x.intersections = intersections[x.id];
-                x.hasConflicts = conflictsMap[x.task.id];
-                x.order = 0;
-            }
-        );
-
-
+        const {tasks, teamsFilter}  = this.state;
+        // const taskParts = calculateTasksParts({tasks, teamsFilter});
 
         switch (this.state.mode) {
             default:
             case 'month':
                 schedule = <MonthSchedule
-                    taskParts={taskParts}
+                    tasks={tasks}
+                    teamsFilter={this.state.teamsFilter}
                     date={this.state.selectedDate}
                     onDayClick={this.navigateToDate.bind(this)}
                     cellHeight={this.state.monthOptions.cellHeight}/>;
@@ -165,21 +149,21 @@ class App extends Component {
             case 'week':
                 schedule = <WeekSchedule
                     taskSelectionCallback={this.selectTask.bind(this)}
-                    taskParts={taskParts}
+                    tasks={tasks}
                     zoom={this.state.zoom}
-                    conflictsMap={conflictsMap}
                     onDayClick={this.navigateToDate.bind(this)}
                     date={this.state.selectedDate}
                     teams={this.state.teams}
+                    teamsFilter={this.state.teamsFilter}
                     cellHeight={this.state.weekOptions.cellHeight}
                     rowsVisible={this.state.weekOptions.rowsVisible}/>;
                 break;
 
             case 'day':
                 schedule = <DaySchedule
-                    taskParts={taskParts}
+                    tasks={tasks}
+                    teamsFilter={this.state.teamsFilter}
                     taskSelectionCallback={this.selectTask.bind(this)}
-                    conflictsMap={conflictsMap}
                     teams={this.state.teams}
                     date={this.state.selectedDate}
                     zoom={this.state.zoom}
@@ -191,8 +175,8 @@ class App extends Component {
                 schedule = (
                     <div style={{overflow: 'auto', height: '500px'}}>
                         <AgendaSchedule
-                            taskParts={taskParts}
-                            conflictsMap={conflictsMap}
+                            tasks={tasks}
+                            teamsFilter={this.state.teamsFilter}
                             teams={this.state.teams}
                         />
                     </div>

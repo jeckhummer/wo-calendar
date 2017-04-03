@@ -58,9 +58,10 @@ class DaySchedule extends Component {
 
 							<div className='tasks-wrapper'>
 								<DayCanvas
+									teamsFilter={this.props.teamsFilter}
                                     taskSelectionCallback={this.props.taskSelectionCallback}
 									conflictsMap={this.props.conflictsMap}
-									taskParts={this.props.taskParts}
+									tasks={this.props.tasks}
 									date={this.props.date}
 									teams={this.props.teams}
 								/>

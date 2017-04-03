@@ -43,8 +43,10 @@ class SelectedTaskDetailsModal extends Component{
                 description={this.props.selectedTask.description}
                 WONumber={this.props.selectedTask.WONumber}
                 WOTNumber={this.props.selectedTask.id}
-                start={moment(this.props.selectedTask.start).format('hh:mm DD MMM YYYY')}
-                end={moment(this.props.selectedTask.end).format('hh:mm DD MMM YYYY')}
+                WODisplayNumber={this.props.selectedTask.WODisplayNumber}
+                WOTDisplayNumber={this.props.selectedTask.WOTDisplayNumber}
+                start={moment(this.props.selectedTask.start).format('YYYY-MM-DD HH:mm')}
+                end={moment(this.props.selectedTask.end).format('YYYY-MM-DD HH:mm')}
                 teamColor={team.color}
                 teamName={team.name}
                 teamMember={this.props.selectedTask.teamMember}
