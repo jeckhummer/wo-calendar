@@ -11,11 +11,7 @@ import * as TasksManager from './TasksManager';
 import * as TeamsManager from './TeamsManager';
 import {Dimmer, Loader} from 'semantic-ui-react';
 import moment from 'moment';
-import {calculateTasksParts} from './selectors';
-
 import {API} from './CurrentAPI';
-
-
 
 class App extends Component {
     constructor(props, context) {
