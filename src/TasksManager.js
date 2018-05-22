@@ -6,7 +6,7 @@ import {TaskBoundary} from './TaskBoundary';
 import {TaskInterval} from './TaskInterval';
 
 export function createTasks(tasksData){
-	return tasksData.map(taskData => this.createTask(taskData));
+	return tasksData.map(taskData => new Task(taskData));
 }
 
 export function createTask(taskData){

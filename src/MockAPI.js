@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import Mocks from './Mocks';
 
-export function getTasksDataPromise() {
+export function getTasksDataPromise(dataCurrentMonth) {
 	const deferred = $.Deferred();
 	setTimeout(
 		() => deferred.resolve(Mocks.tasks),

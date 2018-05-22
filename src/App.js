@@ -17,11 +17,14 @@ class App extends Component {
     constructor(props, context) {
         super(props, context);
 
+        var twoMonthsEarlier = new Date();
+        twoMonthsEarlier.setMonth(twoMonthsEarlier.getMonth() - 3);
         this.state = {
             mode: 'week',
             loadingTasks: false,
             loadingTeamsFilter: false,
             // selectedDate: new Date('17 Mar 2017 11:00:00'),
+            dataCurrentMonth: new Date(),
             selectedDate: new Date(),
             tasks: [],
             teams: [],
@@ -50,8 +53,7 @@ class App extends Component {
 
     loadTasks() {
         this.setState({loadingTasks: true});
-
-        API.getTasksDataPromise()
+        API.getTasksDataPromise(moment(this.state.dataCurrentMonth).format('DD-MM-YYYY'))
             .then(tasksData => {
                 const tasks = TasksManager.createTasks(tasksData);
                 this.setState({
@@ -78,6 +80,11 @@ class App extends Component {
 
     navigateSchedule(quantity, unit) {
         this.setState({selectedDate: moment(this.state.selectedDate).add(quantity, unit).toDate()});
+        if (this.state.selectedDate.getMonth() !== this.state.dataCurrentMonth.getMonth() )
+        {
+            this.state.dataCurrentMonth = this.state.selectedDate;
+            this.loadTasks();
+        }
     }
 
     navigateToToday() {
